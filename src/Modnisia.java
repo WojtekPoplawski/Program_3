@@ -23,8 +23,27 @@ public class Modnisia {
         this.outputTable = new int[W+1][i+1];
         for(int x=0;x<=W;x++) this.outputTable[x][0]=0;
         for(int x=0;x<=i;x++) this.outputTable[0][i]=0;
+        in.close();
     }
     void out(){
-
+        for(int x=1;x<=W;x++){
+           for(int y=1;y<=i;y++){
+                if(x<this.inputTable[y-1][1]){
+                    this.outputTable[x][y]=this.outputTable[x][y-1];
+                }
+                else{
+                    int b;
+                    int a = this.outputTable[x][y-1];
+                    if (x-this.inputTable[y-1][1]>=0){
+                        b = (this.outputTable[x-this.inputTable[y-1][1]][y-1])+this.inputTable[y-1][0];
+                    }
+                    else {
+                        b=0;
+                    }
+                    this.outputTable[x][y]=Math.max(a,b);
+                }
+           }
+        }
+        System.out.println("done");
     }
 }

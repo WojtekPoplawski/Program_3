@@ -8,5 +8,6 @@ public class Main {
         Modnisia modnisia = new Modnisia();
         Kruskal kruskal = new Kruskal();
         modnisia.in();
+        modnisia.out();
     }
 }
