@@ -25,7 +25,7 @@ public class Modnisia {
         for(int x=0;x<=i;x++) this.outputTable[0][i]=0;
         in.close();
     }
-    void out(){
+    void at(){
         for(int x=1;x<=W;x++){
            for(int y=1;y<=i;y++){
                 if(x<this.inputTable[y-1][1]){
@@ -45,5 +45,8 @@ public class Modnisia {
            }
         }
         System.out.println("done");
+    }
+    void out(){
+
     }
 }
