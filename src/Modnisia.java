@@ -9,7 +9,10 @@ public class Modnisia {
     PrintWriter outStream = new PrintWriter("Out0301.txt");
 
     public Modnisia() throws IOException {
-
+        in();
+        at();
+        out();
+        End();
     }
 
     void in() throws FileNotFoundException {
@@ -46,7 +49,6 @@ public class Modnisia {
                 }
            }
         }
-        System.out.println("done");
     }
 
     void End(){
