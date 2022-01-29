@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 public class Modnisia {
@@ -8,9 +6,9 @@ public class Modnisia {
     int W;
     int[][] inputTable;
     int[][] outputTable;
-    //File OutFile = new File();
+    PrintWriter outStream = new PrintWriter("Out0301.txt");
 
-    public Modnisia() throws FileNotFoundException {
+    public Modnisia() throws IOException {
 
     }
 
@@ -50,30 +48,40 @@ public class Modnisia {
         }
         System.out.println("done");
     }
-    void PrintOut(int x) throws FileNotFoundException {
-        PrintWriter outStream = new PrintWriter("Out0301.txt");
-        outStream.println(x);
-        outStream.close();
+
+    void End(){
+        this.outStream.close();
     }
 
-    int[] SearchItems(int x, int y) throws FileNotFoundException {
+    void PrintItem(int x){
+        this.outStream.print(x + " ");
+    }
+
+    void PrintNextLine(){
+        this.outStream.println();
+    }
+
+    void SearchItems(int x, int y){
         int target=this.outputTable[x][y]-this.inputTable[y-1][0];
-        PrintOut(y);
-        while(this.outputTable[x][y]!=target){
+        PrintItem(y);
+        while(this.outputTable[x][y]!=target && x!=0){
             x--;
         }
-        while(this.outputTable[x][y]==this.outputTable[x][y-1]){
+        while(this.outputTable[x][y]==this.outputTable[x][y-1] && y!=1){
             y--;
         }
-        int[] tabOut = new int[2];
-        tabOut[0]=x;
-        tabOut[1]=y;
-        return tabOut;
+        if(x!=0 && y!=0){
+            SearchItems(x,y);
+        }
     }
 
-    void out() throws FileNotFoundException {
-        int[] tabOut = new int[2];
-        tabOut=SearchItems(this.W,this.i);
-        SearchItems(tabOut[0],tabOut[1]);
+    void out(){
+        int temp = this.i;
+        int Biggest = outputTable[W][i];
+        while(outputTable[this.W][temp]==Biggest){
+            SearchItems(this.W,temp);
+            PrintNextLine();
+            temp--;
+        }
     }
 }
