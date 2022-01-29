@@ -12,5 +12,8 @@ public class Main {
         modnisia.at();
         modnisia.out();
         modnisia.End();
+
+        kruskal.in();
+        System.out.println("end");
     }
 }
