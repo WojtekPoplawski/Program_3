@@ -64,13 +64,14 @@ public class Modnisia {
     void SearchItems(int x, int y){
         int target=this.outputTable[x][y]-this.inputTable[y-1][0];
         PrintItem(y);
-        while(this.outputTable[x][y]!=target && x!=0){
+        while(this.outputTable[x][y]>target && x!=0){
             x--;
         }
-        while(this.outputTable[x][y]==this.outputTable[x][y-1] && y!=1){
+        if(y>2)y--;
+        while(this.outputTable[x][y]==this.outputTable[x][y-1] && y!=1 && outputTable[x][y]!=0){
             y--;
         }
-        if(x!=0 && y!=0){
+        if(x!=0 && y!=0 && outputTable[x][y]!=0){
             SearchItems(x,y);
         }
     }
