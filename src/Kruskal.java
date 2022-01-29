@@ -9,7 +9,7 @@ public class Kruskal {
     Scanner in = new Scanner(new File("In0302.txt"));
     int tops;
     List<int[]> topsArray = new ArrayList<>();
-
+    int[][] topsArraySortedByValue;
     public Kruskal() throws FileNotFoundException {
 
     }
@@ -32,6 +32,10 @@ public class Kruskal {
             }
             StartTop++;
         }
+    }
+
+    void at(){
+
     }
 
     void out(){
