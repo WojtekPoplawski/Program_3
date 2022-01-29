@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Modnisia {
@@ -7,7 +8,9 @@ public class Modnisia {
     int W;
     int[][] inputTable;
     int[][] outputTable;
-    public Modnisia() {
+    //File OutFile = new File();
+
+    public Modnisia() throws FileNotFoundException {
 
     }
 
@@ -25,6 +28,7 @@ public class Modnisia {
         for(int x=0;x<=i;x++) this.outputTable[0][i]=0;
         in.close();
     }
+
     void at(){
         for(int x=1;x<=W;x++){
            for(int y=1;y<=i;y++){
@@ -46,7 +50,30 @@ public class Modnisia {
         }
         System.out.println("done");
     }
-    void out(){
+    void PrintOut(int x) throws FileNotFoundException {
+        PrintWriter outStream = new PrintWriter("Out0301.txt");
+        outStream.println(x);
+        outStream.close();
+    }
 
+    int[] SearchItems(int x, int y) throws FileNotFoundException {
+        int target=this.outputTable[x][y]-this.inputTable[y-1][0];
+        PrintOut(y);
+        while(this.outputTable[x][y]!=target){
+            x--;
+        }
+        while(this.outputTable[x][y]==this.outputTable[x][y-1]){
+            y--;
+        }
+        int[] tabOut = new int[2];
+        tabOut[0]=x;
+        tabOut[1]=y;
+        return tabOut;
+    }
+
+    void out() throws FileNotFoundException {
+        int[] tabOut = new int[2];
+        tabOut=SearchItems(this.W,this.i);
+        SearchItems(tabOut[0],tabOut[1]);
     }
 }

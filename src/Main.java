@@ -9,5 +9,6 @@ public class Main {
         Kruskal kruskal = new Kruskal();
         modnisia.in();
         modnisia.at();
+        modnisia.out();
     }
 }
